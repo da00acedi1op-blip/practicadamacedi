@@ -24,16 +24,26 @@
         </header>
         <main>
          <div class="justify-content-center align-items-center d-flex vh-100">
-            <div class="col-6"> 
+            <div class="col-6 col-lg-5 col-md-6 col-sm-8"> 
                 <div class="card text-center shadow" >
                     <div class="car-header fw-bold">
-                        Bienvenido
+                        Bienvenida 
                     </div>
                     <img class="rounder-circle mx-auto d-block" src="{{ asset('images/usuario.jpg') }}" alt="Title" width="100px" height="100px" />
                     <div class="card-body">
-                        <h4 class="card-title">hola</h4>
-                        <p class="card-text">Damacedi López Gómez</p>
-                    </div>
+                        <h4 class="card-title">Autor</h4>
+                        <form action="editar" method="post">
+                            @csrf
+                            @if ($oper ?? false)
+                                <input type="text" name="name" id="name" value="{{ $nombre?? 'Pendiente...' }}">
+                            @else
+                                <p class="card-text">{{ $nombre?? '' }}</p>
+                            @endif
+                            <div class="d-flex justify-content-between">
+                            <a href="/" class="btn btn-danger">regresar</a>
+                            <button="/editar" type="submit" class="btn btn-primary">editar</button>
+                            </div>
+                        </form>
                 </div>
             </div>
          </div>   
